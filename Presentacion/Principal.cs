@@ -6,15 +6,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Presentacion
 {
-    class Principal
+    public class Principal
     {
-        private static ServicioPedido pedidoService = new ServicioPedido(new ArchivoPedido());
+        ServicioPedido pedidoService;
+        public Principal()
+        {
+            pedidoService = new ServicioPedido();
+        }
 
 
-        static void Main(string[] args)
+        public void Menu()
         {
             bool salir = false;
             while (!salir)
@@ -43,7 +48,7 @@ namespace Presentacion
             }
         }
 
-        private static void RegistrarPedido()
+        private void RegistrarPedido()
         {
             Console.Clear();
             Console.WriteLine("Registrar Nuevo Pedido");
@@ -58,28 +63,29 @@ namespace Presentacion
             Console.ReadKey();
         }
 
-        private static void ListaPedidos()
-        {
-            Console.Clear();
-            Console.WriteLine("Historial de Pedidos");
-            var pedidos = pedidoService.ListaPedidos();
+        private void ListaPedidos()
+{
+    Console.Clear();
+    Console.WriteLine("Historial de Pedidos");
+    var pedidos = pedidoService.ListaPedidos();
 
             if (pedidos.Count == 0)
-            {
-                Console.WriteLine("(No hay pedidos aún)");
-            }
-            else
-            {
-                Console.WriteLine("ID | Estudiante | Libro | Fecha");
-                Console.WriteLine(new string('-', 50));
-                foreach (var pedido in pedidos)
-                {
-                    Console.WriteLine($"{pedido.Id} | {pedido.Estudiante} | {pedido.Libro} | {pedido.Fecha:yyyy-MM-dd HH:mm}");
-                }
-            }
+    {
+        Console.WriteLine("(No hay pedidos aún)");
+    }
+    else
+    {
+        Console.WriteLine("ID | Estudiante | Libro | Fecha");
+        Console.WriteLine(new string('-', 50));
+        foreach (var pedido in pedidos)
+        {
+            Console.WriteLine($"{pedido.Id} | {pedido.Estudiante} | {pedido.Libro} | {pedido.Fecha:yyyy-MM-dd HH:mm}");
+        }
+    }
 
-            Console.WriteLine("\nPresione una tecla para continuar...");
-            Console.ReadKey();
+    Console.WriteLine("\nPresione una tecla para continuar...");
+    Console.ReadKey();
+            
         }
     }
 }

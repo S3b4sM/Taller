@@ -10,7 +10,7 @@ namespace Presentacion
     {
         static void Main(string[] args)
         {
-            new Principal().MenuPrincipal();
+            new Principal().Menu();
         }
     }
 }

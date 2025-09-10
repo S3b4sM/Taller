@@ -17,6 +17,10 @@ namespace BLL
             pedidoRepository = repo;
         }
 
+        public ServicioPedido()
+        {
+        }
+
         public string RegistrarPedido(string estudiante, string libro)
         {
             if (estudiante == "" || libro == "")
