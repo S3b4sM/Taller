@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Presentacion
 {
-    internal class Program
+    class Program
     {
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
+            new Principal().MenuPrincipal();
         }
     }
 }
